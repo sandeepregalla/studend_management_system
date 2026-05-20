@@ -108,7 +108,7 @@ def find_by_id(student_id):
         conn.close()
         return row
     except mysql.connector.Error as e:
-        print("❌ DB Error:", e)
+        print(" DB Error:", e)
         return None
 
 def search_students(keyword):
@@ -127,7 +127,7 @@ def search_students(keyword):
         conn.close()
         return rows
     except mysql.connector.Error as e:
-        print("❌ DB Error:", e)
+        print(" DB Error:", e)
         return []
 
 def update_student(student_id, **fields):
@@ -151,11 +151,11 @@ def update_student(student_id, **fields):
         if cur.rowcount:
             print("✅ Student updated.")
         else:
-            print("❌ No student found with that ID.")
+            print(" No student found with that ID.")
     except mysql.connector.IntegrityError as e:
-        print("❌ Update failed (possible duplicate roll). ->", e)
+        print(" Update failed (possible duplicate roll). ->", e)
     except mysql.connector.Error as e:
-        print("❌ DB Error:", e)
+        print(" DB Error:", e)
     finally:
         cur.close()
         conn.close()
@@ -254,7 +254,7 @@ if __name__ == "__main__":
         test = get_server_conn()
         test.close()
     except mysql.connector.Error as e:
-        print("❌ Cannot connect to MySQL server. Check DB_CONFIG.", e)
+        print("❌ Can't connect to MySQL server. Check DB_CONFIG.", e)
         sys.exit(1)
 
     init_db()
